@@ -25,7 +25,7 @@ Here's a walkthrough of implemented user stories:
 
 This walkthrough was done with bill amount across app restarts < 5 seconds so as to demonstrate the functionality without waiting!
 
-<img src='http://imgur.com/iA7MH78' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Video Walkthrough](http://i.imgur.com/iA7MH78.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
