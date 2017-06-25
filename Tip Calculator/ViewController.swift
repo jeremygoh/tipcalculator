@@ -11,6 +11,10 @@ import UIKit
 struct Constants {
     static let tipPercentages = [0.15, 0.18, 0.20]
     static let defaultTipIndexKey = "DefaultTipIndex"
+    static let lastAccessTime = "LastAccessTime"
+    static let lastTipIndexKey = "LastTipIndex"
+    static let lastBillValue = "LastBill"
+    static let timeIntervalToRestoreLastState = 60 * 10
 }
 
 class ViewController: UIViewController, UITextFieldDelegate {
@@ -24,14 +28,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var billFieldModified = false
     
     @IBOutlet weak var plusLabel: UILabel!
-    override func viewWillAppear(_ animated: Bool) {
-        let defaults = UserDefaults.standard
-        tipControl.selectedSegmentIndex = defaults.integer(forKey: Constants.defaultTipIndexKey)
-        billField.becomeFirstResponder()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = UserDefaults.standard
+        let lastAccessTime = defaults.integer(forKey: Constants.lastAccessTime)
+        var tipIndex = defaults.integer(forKey: Constants.defaultTipIndexKey)
+        if (shouldRememberPreviousState(lastAccessTime)) {
+            tipIndex = defaults.integer(forKey: Constants.lastTipIndexKey)
+            let bill = defaults.string(forKey: Constants.lastBillValue)
+            billField.text = bill
+            billTextChanged(self)
+        }
+        tipControl.selectedSegmentIndex = tipIndex
+        billField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +74,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
         billFieldModified = true
+        let defaults = UserDefaults.standard
+        //TODO: does this function get called if change is rejected??
+        defaults.set(billField.text, forKey: Constants.lastBillValue)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -76,12 +89,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    private func shouldRememberPreviousState(_ lastAccessTime: Int) -> Bool {
+        let currentTime = Int(Date().timeIntervalSince1970)
+        return currentTime - lastAccessTime < Constants.timeIntervalToRestoreLastState
+    }
+    
     private func calculateTip() {
         let bill = Double(billField.text!) ?? 0
         let tip = bill * Constants.tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         tipLabel.text = getCurrencyFormattedText(tip)
         totalLabel.text = getCurrencyFormattedText(total)
+        UserDefaults.standard.set(tipControl.selectedSegmentIndex, forKey: Constants.lastTipIndexKey)
     }
     
     private func getCurrencyFormattedText(_ amount: Double) -> String {

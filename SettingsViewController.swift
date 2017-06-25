@@ -13,6 +13,11 @@ class SettingsViewController: UITableViewController {
     
     @IBOutlet weak var defaultTipLabel: UILabel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.tableFooterView = UIView()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         let defaults = UserDefaults.standard
         let defaultTipIndex = defaults.integer(forKey: Constants.defaultTipIndexKey)

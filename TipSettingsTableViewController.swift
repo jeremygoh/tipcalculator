@@ -12,7 +12,8 @@ class TipSettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = false
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
