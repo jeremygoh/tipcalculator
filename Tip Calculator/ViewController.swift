@@ -31,6 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        billField.placeholder = getCurrencyFormattedText(0.00)
         let defaults = UserDefaults.standard
         let lastAccessTime = defaults.integer(forKey: Constants.lastAccessTime)
         var tipIndex = defaults.integer(forKey: Constants.defaultTipIndexKey)
@@ -38,7 +39,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             tipIndex = defaults.integer(forKey: Constants.lastTipIndexKey)
             let bill = defaults.string(forKey: Constants.lastBillValue)
             billField.text = bill
-            billTextChanged(self)
+            if (billField.text != "") {
+                billTextChanged(self)
+            }
         }
         tipControl.selectedSegmentIndex = tipIndex
         billField.becomeFirstResponder()
