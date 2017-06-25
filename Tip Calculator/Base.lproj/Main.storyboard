@@ -43,6 +43,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <action selector="billTextChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="piF-xD-zkZ"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="y3e-sK-mIB"/>
                                         </connections>
                                     </textField>
                                     <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="6qH-jL-aqq">

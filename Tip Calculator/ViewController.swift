@@ -13,7 +13,7 @@ struct Constants {
     static let defaultTipIndexKey = "DefaultTipIndex"
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var billContainerView: UIView!
     @IBOutlet weak var billField: UITextField!
@@ -66,12 +66,28 @@ class ViewController: UIViewController {
         billFieldModified = true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let nsString = textField.text as NSString?
+        if let newString = nsString?.replacingCharacters(in: range, with: string) {
+            let newNumberOfDecimals = newString.components(separatedBy: ".").count - 1
+            return newNumberOfDecimals <= 1
+        } else {
+            return true;
+        }
+    }
+    
     private func calculateTip() {
         let bill = Double(billField.text!) ?? 0
         let tip = bill * Constants.tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = getCurrencyFormattedText(tip)
+        totalLabel.text = getCurrencyFormattedText(total)
+    }
+    
+    private func getCurrencyFormattedText(_ amount: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        return formatter.string(from: amount as NSNumber)!
     }
 }
 
