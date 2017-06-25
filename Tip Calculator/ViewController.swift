@@ -55,7 +55,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true);
     }
     
-
     @IBAction func tipPercentChanged(_ sender: Any) {
         calculateTip()
     }
@@ -63,22 +62,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func billTextChanged(_ sender: Any) {
         calculateTip()
         if !billFieldModified {
-            let navigationBar = self.navigationController!.navigationBar
-            let verticalHeightAvailable = view.frame.height - navigationBar.frame.height
-            UIView.animate(withDuration: 0.2, animations: {
-                self.billContainerView.frame = CGRect(x: 0, y: navigationBar.frame.origin.y + navigationBar.frame.size.height, width: self.view.frame.width, height: verticalHeightAvailable * 0.35)
-                self.billField.frame = CGRect(x: 0, y: self.billContainerView.frame.origin.y, width: self.billField.frame.width, height: verticalHeightAvailable * 0.1)
-                self.tipControl.frame = CGRect(x: self.tipControl.frame.origin.x, y: self.billField.frame.origin.y + self.billField.frame.height + 20, width: self.tipControl.frame.width, height: self.tipControl.frame.height)
-                self.totalLabel.isHidden = false
-                self.tipControl.isHidden = false
-                self.tipLabel.isHidden = false
-                self.plusLabel.isHidden = false
-            })
-            
+            revealTipAndTotalViews()
         }
         billFieldModified = true
         let defaults = UserDefaults.standard
-        //TODO: does this function get called if change is rejected??
         defaults.set(billField.text, forKey: Constants.lastBillValue)
     }
     
@@ -90,6 +77,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
             return true;
         }
+    }
+    
+    private func revealTipAndTotalViews() {
+        let navigationBar = self.navigationController!.navigationBar
+        let verticalHeightAvailable = view.frame.height - navigationBar.frame.height
+        UIView.animate(withDuration: 0.2, animations: {
+            self.billContainerView.frame = CGRect(x: 0, y: navigationBar.frame.origin.y + navigationBar.frame.size.height, width: self.view.frame.width, height: verticalHeightAvailable * 0.35)
+            self.billField.frame = CGRect(x: 0, y: self.billContainerView.frame.origin.y, width: self.billField.frame.width, height: verticalHeightAvailable * 0.1)
+            self.tipControl.frame = CGRect(x: self.tipControl.frame.origin.x, y: self.billField.frame.origin.y + self.billField.frame.height + 20, width: self.tipControl.frame.width, height: self.tipControl.frame.height)
+            self.totalLabel.isHidden = false
+            self.tipControl.isHidden = false
+            self.tipLabel.isHidden = false
+            self.plusLabel.isHidden = false
+        })
     }
     
     private func shouldRememberPreviousState(_ lastAccessTime: Int) -> Bool {

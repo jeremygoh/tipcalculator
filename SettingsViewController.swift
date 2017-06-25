@@ -10,7 +10,6 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     
-    
     @IBOutlet weak var defaultTipLabel: UILabel!
     
     override func viewDidLoad() {
