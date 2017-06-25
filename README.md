@@ -19,13 +19,16 @@ The following **optional** features are implemented:
 * [X] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
+The following **additional** features are implemented:
+* [X] Prevent duplicate decimals
+
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-This walkthrough was done with bill amount across app restarts < 5 seconds so as to demonstrate the functionality without waiting!
+This walkthrough was done with bill amount remembered across app restarts < 5 seconds so as to demonstrate the functionality without waiting!
 
-![Video Walkthrough](http://i.imgur.com/iA7MH78.gif)
+![Video Walkthrough](http://i.imgur.com/2bZ7Zqc.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
