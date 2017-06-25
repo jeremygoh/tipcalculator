@@ -21,7 +21,9 @@ class TipSettingsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let defaultRowIndexPath = IndexPath(row: 0, section: 0)
+        let defaults = UserDefaults.standard
+        let defaultTipIndex = defaults.integer(forKey: Constants.defaultTipIndexKey)
+        let defaultRowIndexPath = IndexPath(row: defaultTipIndex, section: 0)
         self.tableView.selectRow(at: defaultRowIndexPath, animated: false, scrollPosition: UITableViewScrollPosition.middle)
         self.tableView(self.tableView, didSelectRowAt: defaultRowIndexPath)
     }
@@ -44,6 +46,8 @@ class TipSettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at:indexPath) {
             cell.accessoryType = .checkmark
+            let defaults = UserDefaults.standard
+            defaults.set(indexPath.row, forKey: Constants.defaultTipIndexKey)
         }
     }
 
@@ -53,7 +57,7 @@ class TipSettingsTableViewController: UITableViewController {
         }
     }
     
-    private static func doubleToPercentageString(_ percentage: Double) -> String {
+    static func doubleToPercentageString(_ percentage: Double) -> String {
         return String(format: "%d %%", Int(percentage * 100))
     }
 

@@ -14,6 +14,9 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var defaultTipLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        defaultTipLabel.text = "15 %"
+        let defaults = UserDefaults.standard
+        let defaultTipIndex = defaults.integer(forKey: Constants.defaultTipIndexKey)
+        let defaultTip = Constants.tipPercentages[defaultTipIndex]
+        defaultTipLabel.text = TipSettingsTableViewController.doubleToPercentageString(defaultTip)
     }
 }
