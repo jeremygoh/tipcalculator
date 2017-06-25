@@ -28,13 +28,15 @@ Here's a walkthrough of implemented user stories:
 
 This walkthrough was done with bill amount remembered across app restarts < 5 seconds so as to demonstrate the functionality without waiting!
 
-![Video Walkthrough](http://i.imgur.com/2bZ7Zqc.gif)
+![Video Walkthrough](http://i.imgur.com/G8iwPsF.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 I did the layout using a hybrid of storyboard and programmatic views. I need to figure out AutoLayout to get it to work with other screens. I did the layout for an iPhone 7
+
+Setting a default tip percentage doesn't change your current calculation (this is intended).
 
 ## License
 

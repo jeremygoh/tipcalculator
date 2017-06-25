@@ -109,6 +109,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func getCurrencyFormattedText(_ amount: Double) -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
         return formatter.string(from: amount as NSNumber)!
     }
 }
