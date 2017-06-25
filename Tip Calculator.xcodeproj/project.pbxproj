@@ -12,6 +12,8 @@
 		8C19E8981EFF1CB400F8060A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C19E8961EFF1CB400F8060A /* Main.storyboard */; };
 		8C19E89A1EFF1CB400F8060A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C19E8991EFF1CB400F8060A /* Assets.xcassets */; };
 		8C19E89D1EFF1CB400F8060A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C19E89B1EFF1CB400F8060A /* LaunchScreen.storyboard */; };
+		8C19E8A51EFF353200F8060A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19E8A41EFF353200F8060A /* SettingsViewController.swift */; };
+		8C19E8A71EFF3D4400F8060A /* TipSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C19E8A61EFF3D4400F8060A /* TipSettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8C19E8991EFF1CB400F8060A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C19E89C1EFF1CB400F8060A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8C19E89E1EFF1CB400F8060A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C19E8A41EFF353200F8060A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
+		8C19E8A61EFF3D4400F8060A /* TipSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TipSettingsTableViewController.swift; path = ../TipSettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		8C19E8911EFF1CB400F8060A /* Tip Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				8C19E8A61EFF3D4400F8060A /* TipSettingsTableViewController.swift */,
+				8C19E8A41EFF353200F8060A /* SettingsViewController.swift */,
 				8C19E8921EFF1CB400F8060A /* AppDelegate.swift */,
 				8C19E8941EFF1CB400F8060A /* ViewController.swift */,
 				8C19E8961EFF1CB400F8060A /* Main.storyboard */,
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C19E8A71EFF3D4400F8060A /* TipSettingsTableViewController.swift in Sources */,
 				8C19E8951EFF1CB400F8060A /* ViewController.swift in Sources */,
 				8C19E8931EFF1CB400F8060A /* AppDelegate.swift in Sources */,
+				8C19E8A51EFF353200F8060A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
